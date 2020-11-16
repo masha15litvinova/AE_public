@@ -1,0 +1,23 @@
+#include <Arduino.h>
+
+#include <calibration.h>
+
+void setup() 
+{
+pwm.begin();
+ initialize_motors();
+ initialize_servomotors();
+ 
+ 
+ 
+    pwm.setPWM(2, 0, 300);
+  
+
+ delay(10000);
+ 
+}
+
+void loop() 
+{
+  
+}
