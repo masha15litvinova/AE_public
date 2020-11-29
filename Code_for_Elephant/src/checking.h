@@ -2,6 +2,7 @@
 #include <Arduino.h>
 #include <omni_platform.h>
 #include <servomotors.h>
+#include <winch.h>
 
 
 void check_motors(int h)

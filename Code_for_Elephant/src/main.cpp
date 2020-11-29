@@ -16,7 +16,7 @@
 void setup()
 {
   // interrupt # 0, pin 2
- 
+  initialize_winch();
   
   pwm.begin(); //Объявление объекта pwm
 
@@ -25,7 +25,7 @@ void setup()
 
   delay(10);
   Serial.begin(9600);
-
+  winch_homing();
   
 }
 
@@ -65,25 +65,27 @@ void loop()
   Enc();
  
   }*/
- Serial.println("test servo");
- pwm.setPWM(0,0,SERVO0_AVG);
- pwm.setPWM(1,0,SERVO1_AVG);
- pwm.setPWM(2,0,SERVO2_AVG);
- pwm.setPWM(3,0,SERVO3_AVG);
- pwm.setPWM(4,0,SERVO4_AVG);
- pwm.setPWM(5,0,SERVO5_AVG);
- pwm.setPWM(6,0,SERVO6_AVG);
- pwm.setPWM(7,0,SERVO7_AVG);
- pwm.setPWM(8,0,SERVO8_AVG);
- pwm.setPWM(9,0,SERVO9_AVG);
- pwm.setPWM(10,0,SERVO10_AVG);
- pwm.setPWM(11,0,SERVO11_AVG);
- delay(100);
- Serial.println("ready");
+//  Serial.println("test servo");
+//  pwm.setPWM(0,0,SERVO0_AVG);
+//  pwm.setPWM(1,0,SERVO1_AVG);
+//  pwm.setPWM(2,0,SERVO2_AVG);
+//  pwm.setPWM(3,0,SERVO3_AVG);
+//  pwm.setPWM(4,0,SERVO4_AVG);
+//  pwm.setPWM(5,0,SERVO5_AVG);
+//  pwm.setPWM(6,0,SERVO6_AVG);
+//  pwm.setPWM(7,0,SERVO7_AVG);
+//  pwm.setPWM(8,0,SERVO8_AVG);
+//  pwm.setPWM(9,0,SERVO9_AVG);
+//  pwm.setPWM(10,0,SERVO10_AVG);
+//  pwm.setPWM(11,0,SERVO11_AVG);
+//  delay(100);
+ //Serial.println("ready");
+
 // Serial.println("0 servo");
 // pwm.setPWM(1,0, 566);
 // Serial.println("1 servo");
 // pwm.setPWM(2,0, 565);
 // Serial.println("2 servo");
 // delay(2000);
+
 }
