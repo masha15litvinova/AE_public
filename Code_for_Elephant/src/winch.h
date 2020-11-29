@@ -145,7 +145,18 @@ void winch_homing()
       motor_winch(60);
       delay(100);
   } while(analogRead(WINCH_CS)<110);
-  motor_winch(0);
+  motor_winch(0);// останавливаем мотор чтобы робот висел на месте
+  winch_enc=0;//обнуляем энкодер лебедки
+}
+
+int move_winch(float height)
+{
+  float p=2, u , err;
+  int goal;
+  goal=height/((3.1415*winch_diameter)/stepsPerRevolution);
+  err=winch_enc-goal;
+  u=p*err;
+
 }
 
 void initialize_winch()
