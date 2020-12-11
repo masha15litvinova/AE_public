@@ -13,6 +13,8 @@
 #define SERVO9_AVG 650
 #define SERVO10_AVG 600
 #define SERVO11_AVG 200
+
+int pos=400;
 void setup()
 {
   // interrupt # 0, pin 2
@@ -26,6 +28,7 @@ void setup()
   delay(10);
   Serial.begin(9600);
   winch_homing();
+  delay(3000);
   
 }
 
@@ -41,7 +44,26 @@ void loop()
   int enc = 0;
   float f = 0;
   float h = 0; 
-
+  
+  move_winch(300);
+  // while(done==0)move_winch(300);
+  // delay(2000);
+  // done=0;
+  // while(done==0)move_winch(100);
+  // delay(2000);
+  // done=0;
+  // while(done==0)move_winch(200);
+  // delay(2000);
+  // done=0;
+  // for (int i = 0; i < 400; i++) 
+  // {
+  //   while(!done)move_winch(i);
+    
+  // }
+  // for (int i = 400; i < 0; i--) 
+  // {
+  //   while(!done)move_winch(i);
+  // }
 
 
  /* while (abs(enc) < 300)

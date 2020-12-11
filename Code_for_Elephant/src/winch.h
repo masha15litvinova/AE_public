@@ -19,6 +19,10 @@ int length = 0;
 int stepsPerRevolution = 1500;
 int winch_diameter = 32;
 
+float iu_old, err_old;
+
+boolean done = false;
+
 
 
 void motor_winch(int pwm_value)
@@ -135,28 +139,47 @@ float winchGetLength()
 void winch_homing()
 {
   int winch_current;
+  int start=millis();
   //motor_winch(50);
   //delay(50);
+  Serial.println("winch_current:");
   do
   {
     winch_current=analogRead(WINCH_CS);
-      //Serial.println("winch_current:");
-      Serial.print(winch_current);
-      motor_winch(60);
+      Serial.println(winch_current);
+      motor_winch(70);
       delay(100);
-  } while(analogRead(WINCH_CS)<110);
+  } while(analogRead(WINCH_CS)<110 );
+  //|| 10000 < millis()-start
   motor_winch(0);// останавливаем мотор чтобы робот висел на месте
   winch_enc=0;//обнуляем энкодер лебедки
 }
 
 int move_winch(float height)
 {
-  float p=2, u , err;
-  int goal;
-  goal=height/((3.1415*winch_diameter)/stepsPerRevolution);
-  err=winch_enc-goal;
-  u=p*err;
-
+  float p=0.4,i=0.06,d=3, pu, du, iu,u, err, cur_height, max_height=400;
+  if (abs(height)>max_height)height=max_height;
+  else height=abs(height);
+  height=max_height-height;
+  cur_height=winchGetLength();
+  err=cur_height-height;
+  
+  err_old=err;
+  pu=p*err;
+  iu=iu_old+i*err;
+  iu_old=iu;
+  du=d*(err-err_old);
+  u=pu+du+iu;
+  motor_winch(u);
+  Serial.println(u);
+  if (u<10) 
+  {
+    done=true;
+    //motor_winch(0);
+  }  
+  else done=false;
+  //Serial.println(done);
+  return done;
 }
 
 void initialize_winch()
