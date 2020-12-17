@@ -1,6 +1,7 @@
 #include <Arduino.h>
 
 #include <calibration.h>
+
 #define SERVO0_AVG 610
 #define SERVO1_AVG 615
 #define SERVO2_AVG 650
@@ -12,7 +13,7 @@
 #define SERVO8_AVG 630
 #define SERVO9_AVG 650
 #define SERVO10_AVG 600
-#define SERVO11_AVG 200
+#define SERVO11_AVG 600
 void setup()
 {
   // interrupt # 0, pin 2
@@ -65,7 +66,7 @@ void loop()
   Enc();
  
   }*/
- Serial.println("test servo");
+ //Serial.println("test servo");
  pwm.setPWM(0,0,SERVO0_AVG);
  pwm.setPWM(1,0,SERVO1_AVG);
  pwm.setPWM(2,0,SERVO2_AVG);
@@ -78,8 +79,9 @@ void loop()
  pwm.setPWM(9,0,SERVO9_AVG);
  pwm.setPWM(10,0,SERVO10_AVG);
  pwm.setPWM(11,0,SERVO11_AVG);
- delay(100);
- Serial.println("ready");
+ delay(500);
+  
+// Serial.println("ready");
 // Serial.println("0 servo");
 // pwm.setPWM(1,0, 566);
 // Serial.println("1 servo");
