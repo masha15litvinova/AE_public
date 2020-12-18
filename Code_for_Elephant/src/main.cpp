@@ -1,6 +1,7 @@
 #include <Arduino.h>
 
 #include <calibration.h>
+
 #define SERVO0_AVG 610
 #define SERVO1_AVG 615
 #define SERVO2_AVG 650
@@ -12,9 +13,13 @@
 #define SERVO8_AVG 630
 #define SERVO9_AVG 650
 #define SERVO10_AVG 600
+<<<<<<< HEAD
 #define SERVO11_AVG 200
 
 int pos=400;
+=======
+#define SERVO11_AVG 600
+>>>>>>> a090e1e (Gyver library. Testing servos)
 void setup()
 {
   // interrupt # 0, pin 2
@@ -87,6 +92,7 @@ void loop()
   Enc();
  
   }*/
+<<<<<<< HEAD
 //  Serial.println("test servo");
 //  pwm.setPWM(0,0,SERVO0_AVG);
 //  pwm.setPWM(1,0,SERVO1_AVG);
@@ -103,6 +109,24 @@ void loop()
 //  delay(100);
  //Serial.println("ready");
 
+=======
+ //Serial.println("test servo");
+ pwm.setPWM(0,0,SERVO0_AVG);
+ pwm.setPWM(1,0,SERVO1_AVG);
+ pwm.setPWM(2,0,SERVO2_AVG);
+ pwm.setPWM(3,0,SERVO3_AVG);
+ pwm.setPWM(4,0,SERVO4_AVG);
+ pwm.setPWM(5,0,SERVO5_AVG);
+ pwm.setPWM(6,0,SERVO6_AVG);
+ pwm.setPWM(7,0,SERVO7_AVG);
+ pwm.setPWM(8,0,SERVO8_AVG);
+ pwm.setPWM(9,0,SERVO9_AVG);
+ pwm.setPWM(10,0,SERVO10_AVG);
+ pwm.setPWM(11,0,SERVO11_AVG);
+ delay(500);
+  
+// Serial.println("ready");
+>>>>>>> a090e1e (Gyver library. Testing servos)
 // Serial.println("0 servo");
 // pwm.setPWM(1,0, 566);
 // Serial.println("1 servo");
