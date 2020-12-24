@@ -79,6 +79,11 @@ void  servos_go(int *angles_array)
   {
     Serial.print(String(angles_array[i]) + " ");
   }
+  for (byte i = 0; i < 12; i++)
+  {
+    servos[i].setTargetDeg(angles_array[i]);
+  }
+
 
   int servos_end_count = 0; //количество сервомоторов, чье движение закончено
   while (servos_end_count < 12)
@@ -87,16 +92,17 @@ void  servos_go(int *angles_array)
 
     for (byte i = 0; i < 12; i++)
     {
-      if (abs(servos[i].getCurrentDeg() - angles_array[i]) < 2)
+      if (abs(servos[i].getTargetDeg() - angles_array[i]) < 2)
       {
         servos_end_count++;
-        Serial.println("go");
+
         break;
       }
       else
       {
-        servos[i].tick();
-        servos[i].setTargetDeg(angles_array[i]);
+        servos[i].tickManual();
+
+        Serial.println("go");
       }
     }
   }
@@ -107,8 +113,8 @@ void servos_start()
   servos_go(AVG_real);
   Serial.println("delay");
   delay(2000);
-  
-  
+
+
 }
 /*void servos_go(int servos_angles[], int servos_speeds[],float servos_accels = [0,0,0,0,0,0,0,0,0,0,0,0]) //поворачивает до заданного угла с заданной скоростью и ускорением
   {
@@ -147,17 +153,17 @@ void setup()
   Serial.println("setup");
 
   servos_begin();
-  servos_start();
+  //servos_start();
   Serial.println("end setup");
 }
 void loop()
 {
 
-  int array_a [] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+  int array_a [] = {0, 0, 0, 0, 0, 0.2, 0, 0, 0.3, 0, 0, 0};
   set_servos_accels(array_a);
-  int array_s [] = {0, 0, 0, 0, 0, 10, 0, 0, 160, 0, 0, 0};
+  int array_s [] = {0, 0, 0, 0, 0, 5, 0, 0, 5, 0, 0, 0};
   set_servos_speeds(array_s);
-  int array_angle [] = {0, 0, 0, 0, 0, 30, 0, 0, 70, 0, 0, 0};
+  int array_angle [] = {0, 0, 0, 0, 0, 60, 0, 0, 70, 0, 0, 0};
   servos_go(array_angle);
   delay(1000);
 

@@ -30,10 +30,10 @@ void loop()
 
 
 
-  servo_go(10, 60, 0.9);
+  servo_go(7, 60, 0.9);
   Serial.println("go 10");
   delay(1000);
-  servo_go(50,30);
+  servo_go(5,30);
   Serial.println("go 50");
   delay(1000);
 }
